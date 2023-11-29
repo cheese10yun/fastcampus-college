@@ -1,0 +1,54 @@
+# team id 조회
+GET {{host}}{{api}}/teams/4
+Content-Type: application/json
+
+###
+
+# team 페이지 조회
+GET {{host}}{{api}}/teams?
+    page=0&
+    size=10
+Content-Type: application/json
+
+###
+
+# team 생성
+POST {{host}}{{api}}/teams
+Content-Type: application/json
+
+{
+  "firstName": "firstName3",
+  "lastName": "lastName3",
+  "address": "address3",
+  "teamId": 1
+}
+
+
+###
+
+# team 생성
+POST {{host}}{{api}}/teams
+Content-Type: application/json
+
+{
+  "name": "name",
+  "location": "location",
+  "foundedDate": "2023-11-11"
+}
+
+###
+# team 수정
+PUT {{host}}{{api}}/teams/4
+Content-Type: application/json
+
+{
+  "name": "name",
+  "location": "123123",
+  "foundedDate": "2023-11-11"
+}
+
+###
+
+# team 삭제
+DELETE {{host}}{{api}}/teams/1
+Content-Type: application/json

@@ -1,0 +1,57 @@
+
+# member id 조회
+GET {{host}}{{api}}/members/1
+Content-Type: application/json
+
+###
+
+# member 페이지 조회
+GET {{host}}{{api}}/members?
+    page=0&
+    size=10
+Content-Type: application/json
+
+###
+
+# member 생성
+POST {{host}}{{api}}/members
+Content-Type: application/json
+
+{
+  "firstName": "firstName3",
+  "lastName": "lastName3",
+  "address": "address3",
+  "teamId": 1
+}
+
+
+###
+
+# member 생성
+POST {{host}}{{api}}/members
+Content-Type: application/json
+
+{
+  "firstName": "firstName3",
+  "lastName": "lastName3",
+  "address": "address3",
+  "teamId": 1
+}
+
+###
+# member 수정
+PUT {{host}}{{api}}/members/1
+Content-Type: application/json
+
+{
+  "firstName": "firstName",
+  "lastName": "lastName",
+  "address": "address",
+  "teamId": 1
+}
+
+###
+
+# member 수정
+DELETE {{host}}{{api}}/members/1
+Content-Type: application/json
