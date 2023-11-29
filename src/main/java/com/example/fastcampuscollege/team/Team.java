@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -39,6 +40,10 @@ public class Team {
         String location,
         LocalDate foundedDate
     ) {
+        Assert.hasLength(name, "name 값은 필수 값입니다.");
+        Assert.hasLength(location, "location 값은 필수 값입니다.");
+        Assert.notNull(foundedDate, "foundedDate 값은 필수 값입니다.");
+
         this.name = name;
         this.location = location;
         this.foundedDate = foundedDate;

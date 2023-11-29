@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -37,6 +38,11 @@ public class Member {
 
     @Builder
     public Member(String firstName, String lastName, String address, Team team) {
+        Assert.hasLength(firstName, "firstName 값은 필수 값입니다.");
+        Assert.hasLength(lastName, "address 값은 필수 값입니다.");
+        Assert.hasLength(address, "address 값은 필수 값입니다.");
+        Assert.notNull(team, "team 값은 필수 값입니다.");
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -45,7 +51,6 @@ public class Member {
     }
 
     public void update(String firstName, String lastName, String address, Team team) {
-
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
