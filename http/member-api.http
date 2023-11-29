@@ -1,6 +1,6 @@
 
 # member id 조회
-GET {{host}}{{api}}/members/1
+GET {{host}}{{api}}/members/123123
 Content-Type: application/json
 
 ###
@@ -44,7 +44,7 @@ PUT {{host}}{{api}}/members/1
 Content-Type: application/json
 
 {
-  "firstName": "firstName",
+  "firstName": "",
   "lastName": "lastName",
   "address": "address",
   "teamId": 1
