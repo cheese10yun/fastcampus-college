@@ -1,5 +1,7 @@
 package com.example.fastcampuscollege.member;
 
+import com.example.fastcampuscollege.global.EntityNotFoundException;
+import com.example.fastcampuscollege.global.ErrorCode;
 import com.example.fastcampuscollege.team.Team;
 import com.example.fastcampuscollege.team.TeamService;
 import lombok.RequiredArgsConstructor;
@@ -30,13 +32,13 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Member findById(Long id) {
         return memberRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Member not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Member not found", ErrorCode.INVALID_INPUT_VALUE));
     }
 
     @Transactional
     public void updateMember(Long id, MemberModificationRequest dto) {
         Member member = memberRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Member not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Member not found", ErrorCode.INVALID_INPUT_VALUE));
 
         final Team team = teamService.findById(dto.getTeamId());
 

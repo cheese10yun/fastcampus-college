@@ -1,5 +1,7 @@
 package com.example.fastcampuscollege.team;
 
+import com.example.fastcampuscollege.global.EntityNotFoundException;
+import com.example.fastcampuscollege.global.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -25,13 +27,13 @@ public class TeamService {
     @Transactional(readOnly = true)
     public Team findById(Long id) {
         return teamRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Team not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Team not found", ErrorCode.INVALID_INPUT_VALUE));
     }
 
     @Transactional
     public Team updateTeam(Long id, TeamModificationRequest updatedTeam) {
         Team team = teamRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Team not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Team not found", ErrorCode.INVALID_INPUT_VALUE));
 
         team.update(
             updatedTeam.getName(), updatedTeam.getLocation()
